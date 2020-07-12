@@ -1,0 +1,31 @@
+XOOPSIFY
+
+Added xoopsversion.php
+
+changed lib/config
+    added xoopsifying code at top
+    used xoops constants for database host, user, etc.
+    changed names of each database table x to $xoopsDB->prefix("wiki_x")
+    commented out phpwiki authorization code
+    set "remoteuser" to xoopsUser uname
+    
+changed index.php
+    added footer to end of index.php
+    
+changed admin.php
+    added code to enforce admin-only access near top
+    commented out phpwiki authorization code
+    
+changed many files
+    prefaced references to files relative to index.php by "./"
+    
+changed UpdateRecentChanges function in savepages.php
+    added the following when $recentchanges is -1
+         $recentchanges['version'] = 1;
+         $recentchanges['created'] = time();
+         
+created sql/mysql.sql from schemas/schema.mysql
+    commented out "drop table" sql statements
+    added "wiki_" to table names
+    
+-dbritton 5/2005
